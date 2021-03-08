@@ -1,0 +1,103 @@
+CREATE TABLE IF NOT EXISTS Modalidade 
+(ID int PRIMARY KEY,
+Descricao TEXT NOT NULL
+)
+
+
+CREATE TABLE IF NOT EXISTS Enfase 
+(ID int PRIMARY KEY,
+Descricao TEXT NOT NULL
+)
+
+CREATE TABLE IF NOT EXISTS Curso 
+(ID int PRIMARY KEY,
+   Nome varchar(255) NOT NULL,	
+Descricao TEXT NOT NULL,
+Modalidade_ID int NOT NULL, 
+Enfase_ID int NOT NULL, 
+FOREIGN KEY (Modalidade_ID)
+REFERENCES Modalidade (ID)
+	ON DELETE CASCADE 
+	ON UPDATE NO ACTION
+FOREIGN KEY (Enfase_ID)
+REFERENCES Enfase (ID)
+	ON DELETE CASCADE 
+	ON UPDATE NO ACTION
+)
+
+CREATE TABLE IF NOT EXISTS Turma 
+(ID int PRIMARY KEY,
+Grade int NOT NULL	
+Curso_ID int,
+FOREIGN KEY (Curso_ID)
+REFERENCES Curso (ID)
+	ON DELETE CASCADE 
+	ON UPDATE NO ACTION
+)		
+
+CREATE TABLE IF NOT EXISTS Alunos 
+(ID int PRIMARY KEY,
+   Nome varchar(255) NOT NULL,
+Password varchar(255) NOT NULL,
+Email varchar(255) NOT NULL,
+Turma_ID int,
+FOREIGN KEY (Turma_ID)
+REFERENCES Turma (ID)
+	ON DELETE CASCADE 
+	ON UPDATE NO ACTION
+)
+
+CREATE TABLE IF NOT EXISTS Documentos_Necessarios 
+(ID int PRIMARY KEY,
+   Descricao TEXT NOT NULL,	
+Curso_ID int NOT NULL,
+FOREIGN KEY (Curso_ID)
+REFERENCES Curso (ID)
+	ON DELETE CASCADE 
+	ON UPDATE NO ACTION
+)
+
+CREATE TABLE IF NOT EXISTS Documentos_Enviados 
+(ID int PRIMARY KEY,
+   Caminho TEXT NOT NULL,	
+Tipo varchar(255) NOT NULL,
+Doc_Necessario_ID int NOT NULL,
+FOREIGN KEY (Doc_Necessario_ID)
+REFERENCES Documentos_Necessarios (ID)
+	ON DELETE CASCADE 
+	ON UPDATE NO ACTION
+)
+
+	 
+
+const { v4 } = require('uuid');
+
+
+const sqlite3 = require('sqlite3').verbose();
+
+
+console.log(v4())
+
+let db = new sqlite3.Database('./database.db', sqlite3.OPEN_READWRITE, (err) => {
+	if (err) {
+	  console.error(err.message);
+	}
+	console.log('Connected to the chinook database.');
+  });
+  
+  db.serialize(() => {
+	
+let sql = `Update Modalidade set ID = ? where descricao = ?` ;
+db.each(sql,[v4(), 'Ensino a Distância'], (err, row) => {
+if (err) {
+throw err;
+}
+console.log(`${row.descricao} ${row.id}`);
+});
+  });
+  db.close((err) => {
+	if (err) {
+	  console.error(err.message);
+	}
+	console.log('Close the database connection.');
+  });
