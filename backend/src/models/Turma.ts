@@ -2,6 +2,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
     ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
@@ -14,10 +15,11 @@ import Curso from './Curso';
     @PrimaryGeneratedColumn('uuid')
     id: string;
   
-    @Column('varchar')
-    title: string;
+    @Column('int')
+    grade: number;
   
     @ManyToOne(() => Curso, curso => curso.turma)
+    @JoinColumn({ name: 'curso_id'})
     curso: Curso;
 
     @Column('int')

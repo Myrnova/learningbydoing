@@ -4,6 +4,6 @@ import alunosRoutes from './alunos.routes';
 
 const routes = Router();
 
-routes.use('/transactions', alunosRoutes);
+routes.use('/alunos', alunosRoutes);
 
 export default routes;

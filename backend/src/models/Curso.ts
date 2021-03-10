@@ -2,6 +2,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
     ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
@@ -28,14 +29,15 @@ import Turma from './Turma';
     modalidade_id: string;
 
     @ManyToOne(() => Modalidade, modalidade => modalidade.curso)
+    @JoinColumn({name: 'modalidade_id'})
     modalidade: Modalidade;
 
     @Column('int')
     enfase_id: string;
 
     @ManyToOne(() => Enfase, enfase => enfase.curso)
+    @JoinColumn({name: 'enfase_id'})
     enfase: Enfase;
-
 
     @OneToMany(() => Turma, turma => turma.curso)
     turma: Turma;

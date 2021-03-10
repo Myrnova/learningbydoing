@@ -1,48 +1,35 @@
 /* eslint-disable no-param-reassign */
 import { Router } from 'express';
-import { getCustomRepository } from 'typeorm';
-import multer from 'multer';
+import { getRepository } from 'typeorm';
+import GettingDatabase from '../database';
+import Alunos from '../models/Alunos';
+import Modalidade from '../models/Modalidade';
+import { v4 } from 'uuid';
+import Enfase from '../models/Enfase';
 
-const upload = multer(uploadConfig);
+const alunoRouter = Router();
 
-const transactionsRouter = Router();
 
-transactionsRouter.get('/', async (request, response) => {
-  const transactionRepository = getCustomRepository(TransactionRepository);
-  const transactions = await transactionRepository.find();
-  const balance = await transactionRepository.getBalance();
-  return response.json({ transactions, balance });
+interface ModalidadeSelect {
+  id: string,
+  descricao: string;
+}
+
+alunoRouter.get('/', async (request, response) => {
+
+
+  const alunoRepository = getRepository(Alunos);
+  const modalidadeRepository = getRepository(Modalidade);
+  const enfaseRepository = getRepository(Enfase);
+
+  let modalidade = await enfaseRepository.find(); 
+  
+  console.log(modalidade);
+  return response.json(modalidade);
+
 });
 
-transactionsRouter.post('/', async (request, response) => {
-  const { title, value, type, category } = request.body;
-  const createTransactionService = new CreateTransactionService();
-  const transaction = await createTransactionService.execute({
-    title,
-    value,
-    type,
-    category,
-  });
-  return response.json(transaction);
+alunoRouter.post('/', async (request, response) => {
 });
 
-transactionsRouter.delete('/:id', async (request, response) => {
-  const { id } = request.params;
-  const deleteTransactionService = new DeleteTransactionService();
-  await deleteTransactionService.execute(id);
-  return response.status(204).send();
-});
-
-transactionsRouter.post(
-  '/import',
-  upload.single('file'),
-  async (request, response) => {
-    const importTransaction = new ImportTransactionsService();
-
-    const transaction = await importTransaction.execute(request.file.path);
-
-    return response.json(transaction);
-  },
-);
-
-export default transactionsRouter;
+export default alunoRouter;

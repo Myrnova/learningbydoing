@@ -16,11 +16,11 @@ import Curso from './Curso';
     descricao: string;   
   
     @ManyToOne(() => Curso, curso => curso.turma)
-    @JoinColumn({ name: "curso_id" })
+    @JoinColumn({ name: 'curso_id'} )
     curso: Curso;
 
     @Column('int')
-    curso_id: string;
+    curso_ID: string;
   }
   
   export default DocNecessarios;

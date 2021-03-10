@@ -1,6 +1,7 @@
 import {
     Column,
     Entity,
+    JoinColumn,
     ManyToOne,
     PrimaryGeneratedColumn,
   } from 'typeorm';
@@ -15,6 +16,7 @@ import Curso from './Curso';
     descricao: string;   
   
     @ManyToOne(() => Curso, curso => curso.turma)
+    @JoinColumn({ name: 'curso_id'} )
     curso: Curso;
 
     @Column('int')

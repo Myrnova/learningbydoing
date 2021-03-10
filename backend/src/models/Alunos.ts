@@ -9,27 +9,31 @@ import {
     UpdateDateColumn,
   } from 'typeorm';
 import Curso from './Curso';
+import Turma from './Turma';
   
-  @Entity('turmas')
-  class Turma {
+  @Entity('alunos')
+  class Alunos {
     @PrimaryGeneratedColumn('uuid')
     id: string;
   
     @Column('varchar')
-    title: string;
-  
-    @CreateDateColumn()
-    created_at: Date;
-  
-    @UpdateDateColumn()
-    updated_at: Date;
+    nome: string;
+
+    @Column('varchar')
+    descricao: string;
+    
+    @Column('varchar')
+    password: string;
+    
+    @Column('varchar')
+    email: string;    
   
     @ManyToOne(() => Curso, curso => curso.turma)
-    @JoinColumn({ name: "curso_id" })
-    curso: Curso;
+    @JoinColumn({ name: "turma_id" })
+    turma: Turma;
 
     @Column('int')
-    curso_id: string;
+    turma_id: string;
   }
   
-  export default Turma;
+  export default Alunos;
