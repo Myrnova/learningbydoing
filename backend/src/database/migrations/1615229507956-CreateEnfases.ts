@@ -23,6 +23,7 @@ export class CreateEnfases1615229507956 implements MigrationInterface {
                 ]
                 
             }),     
+            true
    
     )
 }

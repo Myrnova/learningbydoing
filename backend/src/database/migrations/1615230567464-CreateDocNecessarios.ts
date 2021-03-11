@@ -24,7 +24,8 @@ export class CreateDocNecessarios1615230567464 implements MigrationInterface {
                         type: 'varchar'
                     }                    
             ]
-            })
+            }),
+            true
         )
 
         

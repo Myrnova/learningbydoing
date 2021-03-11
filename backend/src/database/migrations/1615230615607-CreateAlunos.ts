@@ -32,7 +32,8 @@ export class CreateAlunos1615230615607 implements MigrationInterface {
                         type: 'varchar'
                     }                    
             ]
-            })
+            }),
+            true
         )
 
         await queryRunner.createForeignKey(

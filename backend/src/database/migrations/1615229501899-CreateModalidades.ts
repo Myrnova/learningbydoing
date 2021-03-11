@@ -22,7 +22,8 @@ export class CreateModalidades1615229501899 implements MigrationInterface {
                     }
                 ]
                 
-            }),     
+            }),   
+            true  
    
     )
 }    

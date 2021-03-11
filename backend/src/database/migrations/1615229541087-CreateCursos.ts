@@ -33,7 +33,8 @@ export class CreateCursos1615229541087 implements MigrationInterface {
                     }    
                     
             ]
-            })
+            }),
+            true
         )
 
         await queryRunner.createForeignKey(

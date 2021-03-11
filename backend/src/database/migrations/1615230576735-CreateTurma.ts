@@ -23,7 +23,8 @@ export class CreateTurma1615230576735 implements MigrationInterface {
                         type: 'varchar'
                     }                    
             ]
-            })
+            }),
+            true
         )
 
         await queryRunner.createForeignKey(

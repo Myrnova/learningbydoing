@@ -28,7 +28,8 @@ export class CreateDocEnviados1615230622815 implements MigrationInterface {
                         type: 'varchar'
                     }            
             ]
-            })
+            }),
+            true
         )
 
         
