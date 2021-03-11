@@ -8,6 +8,7 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn,
   } from 'typeorm';
+import Alunos from './Alunos';
 import Curso from './Curso';
   
   @Entity('turmas')
@@ -22,7 +23,10 @@ import Curso from './Curso';
     @JoinColumn({ name: 'curso_id'})
     curso: Curso;
 
-    @Column('int')
+    @OneToMany(() => Alunos, aluno => aluno.turma)
+    alunos: Alunos
+
+    @Column('varchar')
     curso_id: string;
   }
   

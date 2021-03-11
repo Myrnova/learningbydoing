@@ -15,12 +15,12 @@ import Curso from './Curso';
     @Column('varchar')
     descricao: string;   
   
-    @ManyToOne(() => Curso, curso => curso.turma)
+    @ManyToOne(() => Curso, curso => curso.docNecessarios)
     @JoinColumn({ name: 'curso_id'} )
     curso: Curso;
 
-    @Column('int')
-    curso_ID: string;
+    @Column('varchar')
+    curso_id: string;
   }
   
   export default DocNecessarios;

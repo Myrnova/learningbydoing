@@ -15,11 +15,11 @@ import Curso from './Curso';
     @Column('varchar')
     descricao: string;   
   
-    @ManyToOne(() => Curso, curso => curso.turma)
+    @ManyToOne(() => Curso, curso => curso.docEnviados)
     @JoinColumn({ name: 'curso_id'} )
     curso: Curso;
 
-    @Column('int')
+    @Column('varchar')
     curso_id: string;
   }
   

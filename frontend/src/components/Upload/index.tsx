@@ -1,10 +1,18 @@
-import React, { useCallback } from "react";
+import { Dialog, DialogProps } from "@material-ui/core";
+import React, { useCallback, useState } from "react";
+
  import { useDropzone } from "react-dropzone";
  import { useFiles } from "../../context/files";
  
  import { DropContainer, UploadMessage } from "./styles";
  
- function Upload() {
+
+interface CustomDialogProps extends DialogProps {
+  isModalOpen(value: boolean) : void
+}
+
+
+ const Upload: React.FC<CustomDialogProps> = () => {
    const { handleUpload } = useFiles();
  
    const onDrop = useCallback(
@@ -13,7 +21,14 @@ import React, { useCallback } from "react";
      },
      [handleUpload]
    );
- 
+
+   const [openModal, setOpenModal] = useState(false);
+
+   const closeModal = useCallback(event => {
+    setOpenModal(false);
+  }, []);
+
+
    const {
      getRootProps,
      getInputProps,
@@ -41,10 +56,25 @@ import React, { useCallback } from "react";
    }, [isDragActive, isDragReject]);
  
    return (
+     <>
+      <Dialog
+          open={openModal}
+          onClose={closeModal}
+          aria-labelledby="modal-title"
+          aria-describedby="modal-description"
+        >
+          <h2 id="modal-title">
+            Meu Título
+          </h2>
+          <p id="modal-description">
+            Minha Descrição
+          </p>
      <DropContainer {...getRootProps()}>
        <input {...getInputProps()} />
        {renderDragMessage()}
      </DropContainer>
+     </Dialog>
+     </>
    );
  }
  

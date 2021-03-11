@@ -18,9 +18,6 @@ import Turma from './Turma';
   
     @Column('varchar')
     nome: string;
-
-    @Column('varchar')
-    descricao: string;
     
     @Column('varchar')
     password: string;
@@ -28,11 +25,11 @@ import Turma from './Turma';
     @Column('varchar')
     email: string;    
   
-    @ManyToOne(() => Curso, curso => curso.turma)
+    @ManyToOne(() => Turma, turma => turma.alunos)
     @JoinColumn({ name: "turma_id" })
     turma: Turma;
 
-    @Column('int')
+    @Column('varchar')
     turma_id: string;
   }
   

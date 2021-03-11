@@ -25,14 +25,14 @@ import Turma from './Turma';
     @Column('text')
     descricao: string;   
 
-    @Column('int')
+    @Column('varchar')
     modalidade_id: string;
 
     @ManyToOne(() => Modalidade, modalidade => modalidade.curso)
     @JoinColumn({name: 'modalidade_id'})
     modalidade: Modalidade;
 
-    @Column('int')
+    @Column('varchar')
     enfase_id: string;
 
     @ManyToOne(() => Enfase, enfase => enfase.curso)
