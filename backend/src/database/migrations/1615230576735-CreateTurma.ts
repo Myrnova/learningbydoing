@@ -23,9 +23,7 @@ export class CreateTurma1615230576735 implements MigrationInterface {
                         type: 'varchar'
                     }                    
             ]
-            }),
-            true
-        )
+            }), true)
 
         await queryRunner.createForeignKey(
             'turmas',
@@ -33,8 +31,7 @@ export class CreateTurma1615230576735 implements MigrationInterface {
               name: 'TurmaCurso',
               columnNames: ['curso_id'],
               referencedColumnNames: ['id'],
-              referencedTableName: 'cursos',
-              onDelete: 'SET NULL',
+              referencedTableName: 'cursos'
             }),
           );      
     

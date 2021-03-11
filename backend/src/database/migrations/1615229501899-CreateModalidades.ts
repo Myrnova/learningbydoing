@@ -22,10 +22,7 @@ export class CreateModalidades1615229501899 implements MigrationInterface {
                     }
                 ]
                 
-            }),   
-            true  
-   
-    )
+            }), true)
 }    
 
     public async down(queryRunner: QueryRunner): Promise<void> {

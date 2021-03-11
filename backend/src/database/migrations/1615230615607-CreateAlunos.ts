@@ -32,9 +32,7 @@ export class CreateAlunos1615230615607 implements MigrationInterface {
                         type: 'varchar'
                     }                    
             ]
-            }),
-            true
-        )
+            }), true)
 
         await queryRunner.createForeignKey(
             'alunos',
@@ -42,8 +40,7 @@ export class CreateAlunos1615230615607 implements MigrationInterface {
               name: 'AlunoTurma',
               columnNames: ['turma_id'],
               referencedColumnNames: ['id'],
-              referencedTableName: 'turmas',
-              onDelete: 'SET NULL',
+              referencedTableName: 'turmas'
             }),
           );   
     }

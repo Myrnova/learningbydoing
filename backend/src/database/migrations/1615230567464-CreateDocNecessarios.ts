@@ -24,9 +24,7 @@ export class CreateDocNecessarios1615230567464 implements MigrationInterface {
                         type: 'varchar'
                     }                    
             ]
-            }),
-            true
-        )
+            }), true)
 
         
         await queryRunner.createForeignKey(
@@ -35,8 +33,7 @@ export class CreateDocNecessarios1615230567464 implements MigrationInterface {
               name: 'DocNecessarioCurso',
               columnNames: ['curso_id'],
               referencedColumnNames: ['id'],
-              referencedTableName: 'cursos',
-              onDelete: 'SET NULL',
+              referencedTableName: 'cursos'
             }),
           );  
     

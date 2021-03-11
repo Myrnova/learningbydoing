@@ -22,10 +22,7 @@ export class CreateEnfases1615229507956 implements MigrationInterface {
                     }
                 ]
                 
-            }),     
-            true
-   
-    )
+            }), true)
 }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

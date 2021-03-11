@@ -28,9 +28,7 @@ export class CreateDocEnviados1615230622815 implements MigrationInterface {
                         type: 'varchar'
                     }            
             ]
-            }),
-            true
-        )
+            }), true)
 
         
         await queryRunner.createForeignKey(
@@ -39,8 +37,7 @@ export class CreateDocEnviados1615230622815 implements MigrationInterface {
               name: 'DocEnviadoAluno',
               columnNames: ['aluno_id'],
               referencedColumnNames: ['id'],
-              referencedTableName: 'alunos',
-              onDelete: 'SET NULL',
+              referencedTableName: 'alunos'
             }),
           );  
 
@@ -50,8 +47,7 @@ export class CreateDocEnviados1615230622815 implements MigrationInterface {
               name: 'DocEnviadoNecessario',
               columnNames: ['docNecessario_id'],
               referencedColumnNames: ['id'],
-              referencedTableName: 'docNecessarios',
-              onDelete: 'SET NULL',
+              referencedTableName: 'docNecessarios'
             }),
           ); 
     

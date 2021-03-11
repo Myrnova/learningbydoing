@@ -33,9 +33,7 @@ export class CreateCursos1615229541087 implements MigrationInterface {
                     }    
                     
             ]
-            }),
-            true
-        )
+            }), true)
 
         await queryRunner.createForeignKey(
             'cursos',
@@ -43,8 +41,7 @@ export class CreateCursos1615229541087 implements MigrationInterface {
               name: 'CursoEnfase',
               columnNames: ['enfase_id'],
               referencedColumnNames: ['id'],
-              referencedTableName: 'enfases',
-              onDelete: 'SET NULL',
+              referencedTableName: 'enfases'
             }),
           );
           await queryRunner.createForeignKey(
@@ -53,8 +50,7 @@ export class CreateCursos1615229541087 implements MigrationInterface {
               name: 'CursoModalidade',
               columnNames: ['modalidade_id'],
               referencedColumnNames: ['id'],
-              referencedTableName: 'modalidades',
-              onDelete: 'SET NULL',
+              referencedTableName: 'modalidades'
             }),
           );      
     
