@@ -12,6 +12,7 @@ export class CreateDocEnviados1615230622815 implements MigrationInterface {
                         name: 'id',
                         type: 'varchar',
                         isPrimary: true,
+                        isGenerated: true,   
                         generationStrategy: 'uuid',
                     },
                     {

@@ -12,6 +12,7 @@ export class CreateModalidades1615229501899 implements MigrationInterface {
                         name: 'id',
                         type: 'varchar',
                         isPrimary: true,
+                        isGenerated: true,                        
                         generationStrategy: 'uuid',
                     },
 

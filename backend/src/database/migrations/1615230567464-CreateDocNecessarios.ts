@@ -12,6 +12,7 @@ export class CreateDocNecessarios1615230567464 implements MigrationInterface {
                         name: 'id',
                         type: 'varchar',
                         isPrimary: true,
+                        isGenerated: true,   
                         generationStrategy: 'uuid',
                     },
                     {

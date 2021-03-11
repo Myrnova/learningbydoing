@@ -12,6 +12,7 @@ export class CreateEnfases1615229507956 implements MigrationInterface {
                         name: 'id',
                         type: 'varchar',
                         isPrimary: true,
+                        isGenerated: true,   
                         generationStrategy: 'uuid',
                     },
                     

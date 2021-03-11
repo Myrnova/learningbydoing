@@ -6,5 +6,6 @@
     "database" : "./src/database/database.db",
     "cli": {
       "migrationsDir": "./src/database/migrations/"
-    }
+    },
+     "synchronize": true
   }]

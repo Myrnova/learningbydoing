@@ -11,6 +11,7 @@ export class CreateTurma1615230576735 implements MigrationInterface {
                         name: 'id',
                         type: 'varchar',
                         isPrimary: true,
+                        isGenerated: true,   
                         generationStrategy: 'uuid',
                     },
                     {

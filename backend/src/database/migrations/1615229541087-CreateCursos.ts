@@ -12,6 +12,7 @@ export class CreateCursos1615229541087 implements MigrationInterface {
                         name: 'id',
                         type: 'varchar',
                         isPrimary: true,
+                        isGenerated: true,   
                         generationStrategy: 'uuid',
                     },
                     {
