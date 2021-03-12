@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import Upload from '../../components/Upload';
 import api from "../../services/api"
 
 
@@ -34,16 +35,29 @@ interface IAluno {
 
 const Dashboard: React.FC = () => {
 const [dashboard, setDashboard] = useState<IAluno | null>(null);
+const [openModal, setOpenModal] = useState(false);
 useEffect(() => {    
     api.get("/alunos").then(response => {
         setDashboard(response.data[0]);
     });
 }, [])
 
+function handleOpenModal(){
+    setOpenModal(true);
+}
+
+const statusModal = useCallback((data: boolean) => {
+    setOpenModal(data);
+}, [])
+
 return(
     <>
     {dashboard && (
+    <>
      <span>{dashboard.nome}</span>
+     <button onClick={handleOpenModal}> Upload Arquivo</button>
+      <Upload modalOpen={openModal} modalStatus={statusModal}/>
+    </>
     )
     }   
     </>

@@ -1,5 +1,5 @@
 import { Dialog, DialogProps } from "@material-ui/core";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
  import { useDropzone } from "react-dropzone";
  import { useFiles } from "../../context/files";
@@ -7,14 +7,29 @@ import React, { useCallback, useState } from "react";
  import { DropContainer, UploadMessage } from "./styles";
  
 
-interface CustomDialogProps extends DialogProps {
-  isModalOpen(value: boolean) : void
+interface CustomDialogProps {
+  modalOpen: boolean
+  modalStatus(name: boolean): void
 }
 
 
- const Upload: React.FC<CustomDialogProps> = () => {
-   const { handleUpload } = useFiles();
- 
+ const Upload: React.FC<CustomDialogProps> = ({
+   modalOpen,
+   modalStatus
+ }) => {
+
+   const [openModal, setOpenModal] = useState(false);
+
+   const { handleUpload } = useFiles(); 
+
+   useEffect(() => {
+    setOpenModal(modalOpen);
+   },[modalOpen])
+
+   useEffect(() => {
+     modalStatus(openModal)
+   },[modalStatus, openModal])
+
    const onDrop = useCallback(
      (files) => {
        handleUpload(files);
@@ -22,7 +37,6 @@ interface CustomDialogProps extends DialogProps {
      [handleUpload]
    );
 
-   const [openModal, setOpenModal] = useState(false);
 
    const closeModal = useCallback(event => {
     setOpenModal(false);
