@@ -9,6 +9,7 @@ import {
     UpdateDateColumn,
   } from 'typeorm';
 import Curso from './Curso';
+import DocEnviados from './Documentos_Enviados';
 import Turma from './Turma';
   
   @Entity('alunos')
@@ -31,6 +32,10 @@ import Turma from './Turma';
 
     @Column('varchar')
     turma_id: string;
+
+
+    @OneToMany(() => DocEnviados, docEnviado => docEnviado.aluno)
+    docEnviado: DocEnviados;
   }
   
   export default Alunos;

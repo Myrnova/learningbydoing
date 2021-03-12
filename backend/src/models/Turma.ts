@@ -19,7 +19,7 @@ import Curso from './Curso';
     @Column('int')
     grade: number;
   
-    @ManyToOne(() => Curso, curso => curso.turma)
+    @ManyToOne(() => Curso, curso => curso.turma, {onDelete: 'CASCADE' })
     @JoinColumn({ name: 'curso_id'})
     curso: Curso;
 

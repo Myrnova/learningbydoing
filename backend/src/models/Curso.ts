@@ -28,14 +28,14 @@ import Turma from './Turma';
     @Column('varchar')
     modalidade_id: string;
 
-    @ManyToOne(() => Modalidade, modalidade => modalidade.curso)
+    @ManyToOne(() => Modalidade, modalidade => modalidade.curso, { onDelete: 'CASCADE' })
     @JoinColumn({name: 'modalidade_id'})
     modalidade: Modalidade;
 
     @Column('varchar')
     enfase_id: string;
 
-    @ManyToOne(() => Enfase, enfase => enfase.curso)
+    @ManyToOne(() => Enfase, enfase => enfase.curso, { onDelete: 'CASCADE' })
     @JoinColumn({name: 'enfase_id'})
     enfase: Enfase;
 
