@@ -16,7 +16,7 @@ import Curso from './Curso';
     @Column('varchar')
     descricao: string;   
   
-    @ManyToOne(() => Curso, curso => curso.docEnviados, { onDelete: 'CASCADE' })
+    @ManyToOne(() => Curso, curso => curso.docEnviado, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'curso_id'} )
     curso: Curso;
 

@@ -1,14 +1,11 @@
 import {
     Column,
-    CreateDateColumn,
     Entity,
     JoinColumn,
     ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
-    UpdateDateColumn,
   } from 'typeorm';
-import Curso from './Curso';
 import DocEnviados from './Documentos_Enviados';
 import Turma from './Turma';
   
@@ -26,13 +23,12 @@ import Turma from './Turma';
     @Column('varchar')
     email: string;    
   
-    @ManyToOne(() => Turma, turma => turma.alunos)
+    @ManyToOne(() => Turma, turma => turma.alunos,  { onDelete: 'CASCADE' })
     @JoinColumn({ name: "turma_id" })
     turma: Turma;
 
     @Column('varchar')
     turma_id: string;
-
 
     @OneToMany(() => DocEnviados, docEnviado => docEnviado.aluno)
     docEnviado: DocEnviados;

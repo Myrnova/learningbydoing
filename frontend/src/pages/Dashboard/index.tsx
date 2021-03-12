@@ -1,20 +1,51 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import api from "../../services/api"
 
-const Dashboard: React.FC = () => {
 
-useEffect(() => {    
-async function loadAlunoInfo(): Promise<void> {
-    const alunos = await api.get("/alunos");
-    console.log(alunos);
+
+interface IDocNecessarios{
+    descricao: string,
+    id: string
 }
 
-loadAlunoInfo();
-},[])
+interface IAluno {
+    email: string,
+    id: string,
+    nome: string,
+    password?: string,
+    turma: {
+        grade: number,
+        id: string,
+        curso: {
+            descricao: string,
+            nome: string
+            id: string,
+            enfase: {
+                descricao: string
+            },
+            modalidade: {
+                descricao: string
+            },
+            docNecessario: IDocNecessarios[],
+        },
+    },     
+}
+
+
+const Dashboard: React.FC = () => {
+const [dashboard, setDashboard] = useState<IAluno | null>(null);
+useEffect(() => {    
+    api.get("/alunos").then(response => {
+        setDashboard(response.data[0]);
+    });
+}, [])
 
 return(
     <>
-    <h1>Dashboard</h1>
+    {dashboard && (
+     <span>{dashboard.nome}</span>
+    )
+    }   
     </>
 )
 }

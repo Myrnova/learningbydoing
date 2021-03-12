@@ -1,17 +1,15 @@
 import {
     Column,
-    CreateDateColumn,
     Entity,
     JoinColumn,
     ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
-    UpdateDateColumn,
   } from 'typeorm';
 import DocEnviados from './Documentos_Enviados';
-import DocNecessarios from './Documentos_Enviados';
-  import Enfase from './Enfase';
-  import Modalidade from './Modalidade';
+import DocNecessarios from './Documentos_Necessarios';
+import Enfase from './Enfase';
+import Modalidade from './Modalidade';
 import Turma from './Turma';
   
   @Entity('cursos')
@@ -43,10 +41,10 @@ import Turma from './Turma';
     turma: Turma;
 
     @OneToMany(() => DocNecessarios, docNecessarios => docNecessarios.curso)
-    docNecessarios: DocNecessarios;
+    docNecessario: DocNecessarios;
 
     @OneToMany(() => DocEnviados, docEnviados => docEnviados.curso)
-    docEnviados: DocEnviados;
+    docEnviado: DocEnviados;
 
   }
   

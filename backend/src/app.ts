@@ -8,7 +8,10 @@ import routes from './routes';
 
 import createConnection from './database/index';
 
-createConnection();
+createConnection().then(async connection => {
+    console.log("Connected to database!");
+
+}).catch(error => console.log(error));
 
 const app = express();
 
