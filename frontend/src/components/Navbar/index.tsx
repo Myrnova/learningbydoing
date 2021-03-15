@@ -4,15 +4,19 @@ import React from 'react';
 import {Navigation} from 'react-minimal-side-navigation';
 
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
+
+  const history = useHistory();
+  const location = useLocation();
+
   return (
-    <>
+    <React.Fragment>
       <Navigation
-          // you can use your own router's api to get pathname
-          activeItemId="/management/members"
-          onSelect={({itemId}) => {
-            // maybe push to the route
+       activeItemId={location.pathname}
+          onSelect={({ itemId }) => {
+            history.push(itemId);
           }}
           items={[
             {
@@ -24,7 +28,7 @@ const Navbar: React.FC = () => {
             },
             {
               title: 'Documentos Pendentes',
-              itemId: '/documents',
+              itemId: '/documentos',
               elemBefore: () => <AssignmentIcon/>,
               // subNav: [
               //   {
@@ -36,20 +40,10 @@ const Navbar: React.FC = () => {
               //     itemId: '/management/members',
               //   },
               // ],
-            },
-            {
-              title: 'Another Item',
-              itemId: '/another',
-              subNav: [
-                {
-                  title: 'Teams',
-                  itemId: '/management/teams',
-                },
-              ],
-            },
+            },            
           ]}
         />
-    </>
+    </React.Fragment>
   );
 }
 

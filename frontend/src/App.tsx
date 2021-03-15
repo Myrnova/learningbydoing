@@ -9,10 +9,9 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
     <AppProvider>
-      <Routes />
+      <Routes />     
     </AppProvider>
     <GlobalStyle/>
-
   </BrowserRouter>
  
   );

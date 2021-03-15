@@ -1,13 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import Upload from '../../components/Upload';
+import React, { useEffect, useState } from 'react';
+import { DashboardLayout } from '../../components/Layout';
 import api from "../../services/api"
 
-
-
-interface IDocNecessarios{
-    descricao: string,
-    id: string
-}
 
 interface IAluno {
     email: string,
@@ -26,8 +20,7 @@ interface IAluno {
             },
             modalidade: {
                 descricao: string
-            },
-            docNecessario: IDocNecessarios[],
+            },            
         },
     },     
 }
@@ -35,31 +28,45 @@ interface IAluno {
 
 const Dashboard: React.FC = () => {
 const [dashboard, setDashboard] = useState<IAluno | null>(null);
-const [openModal, setOpenModal] = useState(false);
+
 useEffect(() => {    
     api.get("/alunos").then(response => {
         setDashboard(response.data[0]);
     });
 }, [])
 
-function handleOpenModal(){
-    setOpenModal(true);
-}
 
-const statusModal = useCallback((data: boolean) => {
-    setOpenModal(data);
-}, [])
+useEffect(() => {
+    localStorage.setItem(
+      '@AlunoOnline:cursoId',
+      JSON.stringify(dashboard?.turma.curso.id),
+    );
+  }, [dashboard?.turma.curso.id]);
+ 
 
 return(
-    <>
+     <>
+     <DashboardLayout>
     {dashboard && (
     <>
      <span>{dashboard.nome}</span>
-     <button onClick={handleOpenModal}> Upload Arquivo</button>
-      <Upload modalOpen={openModal} modalStatus={statusModal}/>
+     <span>{dashboard.email}</span>
+     {dashboard.turma &&  (
+         <>
+     <span>{dashboard.turma.grade.toString()}</span>
+     <span>{dashboard.turma.curso.nome.toString()}</span>
+     <span>{dashboard.turma.curso.descricao.toString()}</span>
+     <span>{dashboard.turma.curso.enfase.descricao.toString()}</span>
+     <span>{dashboard.turma.curso.modalidade.descricao.toString()}</span>
+     </>
+     )}
+   
+    
+
     </>
     )
-    }   
+    } 
+    </DashboardLayout>
     </>
 )
 }

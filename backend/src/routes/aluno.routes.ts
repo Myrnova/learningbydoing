@@ -21,7 +21,6 @@ interface ModalidadeSelect {
  
 
 alunoRouter.get('/', async (request, response) => {
-
   
   const alunoRepository = getRepository(Alunos);
   let aluno = await alunoRepository
@@ -37,31 +36,15 @@ alunoRouter.get('/', async (request, response) => {
 
 });
 
-interface TurmaProps {
-  grade: number,
-  id: string,
-  curso_id: string 
+alunoRouter.post('/documentos', async (request, response) => {
 
-}
+  const { curso_id } = request.body;  
+  
+  const docNecessarioRepository = getRepository(DocNecessarios);
+  let docNecessario = await docNecessarioRepository.find({curso_id: curso_id})      
 
-alunoRouter.post('/', async (request, response) => {          
- try {
-        
-  let aluno = await getRepository(Alunos)
-      .createQueryBuilder("alunos")
-      .leftJoinAndSelect('alunos.turma', 'turmas')
-      .leftJoinAndSelect('turmas.curso', 'cursos')     
-      .leftJoinAndSelect('cursos.modalidade', 'modalidades')
-      .leftJoinAndSelect('cursos.enfase', 'enfases')
-      .leftJoinAndSelect('cursos.docNecessario', 'docNecessarios')    
-      .getOne();
-    
-      
-      return response.json(aluno);
+  return response.json(docNecessario);
 
- } catch (error) {
-   console.log(error);
- }
 });
 
 export default alunoRouter;
