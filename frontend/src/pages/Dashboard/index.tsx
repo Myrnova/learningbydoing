@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { DashboardLayout } from '../../components/Layout';
 import api from "../../services/api"
+import { Info, Title } from './styles';
 
-
+interface IDocNecessarios{
+    descricao: string,
+    id: string
+}
 interface IAluno {
     email: string,
     id: string,
@@ -20,18 +25,21 @@ interface IAluno {
             },
             modalidade: {
                 descricao: string
-            },            
+            },
+            docNecessario: IDocNecessarios[]            
         },
     },     
 }
 
-
 const Dashboard: React.FC = () => {
 const [dashboard, setDashboard] = useState<IAluno | null>(null);
+
+const history = useHistory();
 
 useEffect(() => {    
     api.get("/alunos").then(response => {
         setDashboard(response.data[0]);
+        console.log(response.data[0])
     });
 }, [])
 
@@ -48,22 +56,30 @@ return(
      <>
      <DashboardLayout>
     {dashboard && (
-    <>
-     <span>{dashboard.nome}</span>
-     <span>{dashboard.email}</span>
+    <Info>        
+    <Title>Informações</Title>
+     <div><span>Nome: {dashboard.nome}</span>
+     <span>Email: {dashboard.email}</span></div>
      {dashboard.turma &&  (
+        <>
+        <div><span>Curso: {dashboard.turma.curso.nome.toString()}</span>
+        <span>Enfase: {dashboard.turma.curso.enfase.descricao.toString()}</span>
+        <span>Modalidade: {dashboard.turma.curso.modalidade.descricao.toString()}</span>
+        <span>Descrição: {dashboard.turma.curso.descricao.toString()}</span></div>
+        <div><span>Turma: {dashboard.turma.id.toString()}</span>
+        <span>Grade: {dashboard.turma.grade.toString()}</span></div>      
+       
+        </>
+        )}
+
+     {dashboard.turma.curso.docNecessario && (
          <>
-     <span>{dashboard.turma.grade.toString()}</span>
-     <span>{dashboard.turma.curso.nome.toString()}</span>
-     <span>{dashboard.turma.curso.descricao.toString()}</span>
-     <span>{dashboard.turma.curso.enfase.descricao.toString()}</span>
-     <span>{dashboard.turma.curso.modalidade.descricao.toString()}</span>
-     </>
+         <label htmlFor="btnIrDocumentos">Você possui documentos pendentes, clique no botão para checa-los</label>
+         <button id="btnIrDocumentos" onClick={() => history.push("/documentos")}>Checar documentos</button>
+        </>
      )}
    
-    
-
-    </>
+    </Info>
     )
     } 
     </DashboardLayout>

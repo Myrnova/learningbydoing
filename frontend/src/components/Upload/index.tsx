@@ -4,18 +4,20 @@ import React, { useCallback, useEffect, useState } from "react";
  import { useDropzone } from "react-dropzone";
  import { useFiles } from "../../context/files";
  
- import { DropContainer, UploadMessage } from "./styles";
+ import { CustomDialog, Descriptions, DropContainer, UploadMessage } from "./styles";
  
 
 interface CustomDialogProps {
   modalOpen: boolean
   modalStatus(name: boolean): void
+  documentTitle: string
 }
 
 
  const Upload: React.FC<CustomDialogProps> = ({
    modalOpen,
-   modalStatus
+   modalStatus,
+   documentTitle
  }) => {
 
    const [openModal, setOpenModal] = useState(false);
@@ -71,23 +73,23 @@ interface CustomDialogProps {
  
    return (
      <>
-      <Dialog
+      <CustomDialog 
           open={openModal}
           onClose={closeModal}
           aria-labelledby="modal-title"
           aria-describedby="modal-description"
+         
         >
+          <Descriptions>
           <h2 id="modal-title">
-            Meu Título
-          </h2>
-          <p id="modal-description">
-            Minha Descrição
-          </p>
+            { documentTitle}
+          </h2>         
+          </Descriptions>
      <DropContainer {...getRootProps()}>
        <input {...getInputProps()} />
        {renderDragMessage()}
      </DropContainer>
-     </Dialog>
+     </CustomDialog>
      </>
    );
  }

@@ -2,6 +2,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import React from 'react';
 import {Navigation} from 'react-minimal-side-navigation';
+import './index.css'
 
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 import { useHistory, useLocation } from 'react-router-dom';

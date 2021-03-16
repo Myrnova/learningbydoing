@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import BodyWrapper from "../BodyWrapper";
 import Navbar from "../Navbar";
+import { Container } from "./styles";
 
 interface IProps {
     children: ReactNode;
@@ -9,21 +10,12 @@ interface IProps {
 export const DashboardLayout = ({ children }: IProps) => {
   return (
     <BodyWrapper>
-      <div className="flex h-screen bg-gray-200">
+      <div className="flex h-screen bg-gray-200" style={{backgroundColor: "rgba(243, 244, 246, 1)"}}>
         <Navbar />
-
-        <div className="flex flex-col flex-1 overflow-hidden">
-          <main className="content">
-            <section className="sm:flex-row flex flex-col flex-1">
-              <div
-                className="content-box"
-                style={{ flexGrow: 2, flexBasis: "0%" }}
-              >
-                {children}
-              </div>
-            </section>
-          </main>
-        </div>
+        <Container className="flex flex-col flex-1 overflow-hidden">
+        {children}  
+          
+        </Container>
       </div>
     </BodyWrapper>
   );

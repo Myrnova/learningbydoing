@@ -1,0 +1,14 @@
+nav span {
+   color: #2CB1EE !important;
+   text-shadow: 0px 0px 1px black;
+   font-size: 16px;
+};
+nav svg {
+    color: #2CB1EE  !important;
+};
+nav div {
+    z-index: 9;
+}
+nav .side-navigation-panel-select-option-selected{
+    background-color: white !important;
+}

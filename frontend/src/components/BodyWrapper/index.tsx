@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { Container } from './styles';
 
 
 interface IProps {
@@ -7,8 +8,8 @@ interface IProps {
 
 const BodyWrapper = ({children}: IProps) => {
   return (
-      <div className="relative min-h-screen">
-        <main className="w-full min-h-screen">{children}</main>
+      <div>
+        <Container>{children}</Container>
       </div>
   );
 };

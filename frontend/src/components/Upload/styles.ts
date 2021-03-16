@@ -1,3 +1,4 @@
+import { Dialog, withStyles } from "@material-ui/core";
 import styled, { css } from "styled-components";
  
  const dragActive = css`
@@ -22,6 +23,8 @@ type IDropContainer = {
 
   ${(props: any) => props.isDragActive && dragActive};
   ${(props: any) => props.isDragReject && dragReject};
+
+  
 `;
 
 const messageColors = {
@@ -40,4 +43,37 @@ export const UploadMessage = styled.p<ITypeMessageColor>`
   justify-content: center;
   align-items: center;
   padding: 15px 0;
+  
+`;
+
+
+export const CustomDialog = withStyles({
+  paper: {
+    margin: 32,
+    position: 'relative',
+    overflowY: 'auto',
+    height: `50%`,
+    width: `100%`,
+    // Fix IE 11 issue, to remove at some point.
+    '@media print': {
+      overflowY: 'visible',
+      boxShadow: 'none'
+    }
+  }, 
+ 
+})(Dialog);
+
+export const Descriptions = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+h1{
+  margin-bottom: 20px;
+}
+
+p {
+
+}
+
+
 `;

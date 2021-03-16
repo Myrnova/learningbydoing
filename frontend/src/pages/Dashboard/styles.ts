@@ -1,25 +1,24 @@
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
-import styled from 'styled-components';
+
 
 export const Info = styled.div` 
   display: flex;       
   flex-direction: column;
   width: 50%;
   position: relative;
-  left: 25%;
-
+  left:25%;
+   
  
   div {
-    background: #fff;
     border-radius: 5px;
     width: 100%;
     padding: 24px;
-    display: flex;
-    flex-direction: column;
+    display: block;
     text-decoration: none;
     align-items: center;
     transition: transform 0.2s;
-    position: relative;    
+    position: relative;
     background-color: rgba(243, 244, 246, 1);
     &:hover {
       transform: translateX(10px);
@@ -35,21 +34,6 @@ export const Info = styled.div`
     span {
       display: block
     }
-    button{
-    background:#2CB1EE;
-    height:56px;
-    border-radius: 10px;
-    border:0;
-    padding: 0 8px;
-    color: #312e38;
-    width: 50%;
-    font-weight: 500;
-    margin-top:16px;
-    transition: background-color 0.2s;
-    &:hover{
-      background: ${shade(0.2, '#2CB1EE')}
-    }
-  }
   }
 `;
 
@@ -61,6 +45,5 @@ export const Title = styled.h1`
   margin-top: 80px;
   display:flex;
   justify-content: center;
-  color: ${shade(0.5, '#2CB1EE')};
 `;
 
