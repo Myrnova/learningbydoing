@@ -4,7 +4,7 @@ export class CreateDocEnviados1615230622815 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
     
-        queryRunner.createTable(
+       await queryRunner.createTable(
             new Table({
                 name: 'docEnviados',
                 columns: [

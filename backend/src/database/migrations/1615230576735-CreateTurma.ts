@@ -3,7 +3,7 @@ import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 export class CreateTurma1615230576735 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        queryRunner.createTable(
+        await queryRunner.createTable(
             new Table({
                 name: 'turmas',
                 columns: [

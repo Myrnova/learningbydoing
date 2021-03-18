@@ -4,7 +4,7 @@ export class CreateDocNecessarios1615230567464 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
     
-        queryRunner.createTable(
+        await queryRunner.createTable(
             new Table({
                 name: 'docNecessarios',
                 columns: [

@@ -4,7 +4,7 @@ export class CreateAlunos1615230615607 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
     
-        queryRunner.createTable(
+        await queryRunner.createTable(
             new Table({
                 name: 'alunos',
                 columns: [

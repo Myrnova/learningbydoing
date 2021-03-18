@@ -25,7 +25,7 @@ export const Info = styled.div`
       transform: translateX(10px);
     }
     & + div {
-      margin-top: 16px;
+      margin-top: 5px;
     }
     img {
       width: 64px;
@@ -36,7 +36,7 @@ export const Info = styled.div`
       display: block
     }
     button{
-    background:#2CB1EE;
+    background: #bfe7f9 ;
     height:56px;
     border-radius: 10px;
     border:0;
@@ -47,7 +47,7 @@ export const Info = styled.div`
     margin-top:16px;
     transition: background-color 0.2s;
     &:hover{
-      background: ${shade(0.2, '#2CB1EE')}
+      background: ${shade(0.2, '#bfe7f9')}
     }
   }
   }

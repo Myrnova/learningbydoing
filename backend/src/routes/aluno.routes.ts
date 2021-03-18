@@ -31,7 +31,7 @@ alunoRouter.get('/', async (request, response) => {
       .leftJoinAndSelect('cursos.enfase', 'enfases')
       .leftJoinAndSelect('cursos.docNecessario', 'docNecessarios')    
       .getMany();
-
+  delete aluno[0].password;
   return response.json(aluno);
 
 });

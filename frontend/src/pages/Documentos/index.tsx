@@ -44,11 +44,11 @@ return(
     <Title>Documentos Pendentes</Title>
     <Info>
     {docNecessarios && docNecessarios.map(docNecessario => ( 
-    <div key = {docNecessario.id}>
-    <span>{docNecessario.descricao}</span>
-    <button onClick={handleOpenModal}> Upload Arquivo</button>
-      <Upload modalOpen={openModal} modalStatus={statusModal} documentTitle ={docNecessario.descricao}/>
-    </div>
+      <div key = {docNecessario.id}>
+      <span>{docNecessario.descricao}</span>
+      <button onClick={handleOpenModal}> Upload Arquivo</button>
+        <Upload modalOpen={openModal} modalStatus={statusModal} documentTitle={docNecessario.descricao}/>
+      </div>
       ))}
     </Info>
     </DashboardLayout>

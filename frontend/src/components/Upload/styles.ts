@@ -15,7 +15,7 @@ type IDropContainer = {
  };
  
  export const DropContainer = styled.div<IDropContainer>`
-  border: 1px dashed #ddd;
+  border: 1px dashed black;
   border-radius: 4px;
   cursor: pointer;
 
@@ -58,7 +58,8 @@ export const CustomDialog = withStyles({
     '@media print': {
       overflowY: 'visible',
       boxShadow: 'none'
-    }
+    },
+    backgroundColor: '#bfe7f9'
   }, 
  
 })(Dialog);
@@ -71,8 +72,12 @@ h1{
   margin-bottom: 20px;
 }
 
-p {
-
+h2 {
+  font-size: 24px;
+  margin: 50px 16px;
+}
+p{
+  margin: 30px 10px;
 }
 
 

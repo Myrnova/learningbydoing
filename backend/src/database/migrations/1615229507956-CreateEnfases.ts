@@ -27,7 +27,7 @@ export class CreateEnfases1615229507956 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> {
     
-        await queryRunner.dropTable(`enfases`)    
+        await queryRunner.dropTable('enfases')    
     
     }
 

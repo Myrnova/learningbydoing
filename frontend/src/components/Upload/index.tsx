@@ -82,8 +82,11 @@ interface CustomDialogProps {
         >
           <Descriptions>
           <h2 id="modal-title">
-            { documentTitle}
-          </h2>         
+            Envie o documento informado abaixo
+          </h2>       
+          <p>
+          {documentTitle}
+          </p>
           </Descriptions>
      <DropContainer {...getRootProps()}>
        <input {...getInputProps()} />

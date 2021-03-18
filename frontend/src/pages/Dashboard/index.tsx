@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { DashboardLayout } from '../../components/Layout';
 import api from "../../services/api"
-import { Info, Title } from './styles';
+import { DocPendente, Info, Title } from './styles';
 
 interface IDocNecessarios{
     descricao: string,
@@ -73,10 +73,10 @@ return(
         )}
 
      {dashboard.turma.curso.docNecessario && (
-         <>
-         <label htmlFor="btnIrDocumentos">Você possui documentos pendentes, clique no botão para checa-los</label>
-         <button id="btnIrDocumentos" onClick={() => history.push("/documentos")}>Checar documentos</button>
-        </>
+         <DocPendente>
+            <label htmlFor="btnIrDocumentos">Você possui documentos pendentes, clique no botão para checa-los</label>
+            <button id="btnIrDocumentos" onClick={() => history.push("/documentos")}>Checar documentos</button>
+        </DocPendente>
      )}
    
     </Info>

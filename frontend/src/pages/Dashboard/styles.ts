@@ -19,12 +19,12 @@ export const Info = styled.div`
     align-items: center;
     transition: transform 0.2s;
     position: relative;
-    background-color: rgba(243, 244, 246, 1);
+    background-color: #bfe7f9;
     &:hover {
       transform: translateX(10px);
     }
     & + div {
-      margin-top: 16px;
+      margin-top: 5px;
     }
     img {
       width: 64px;
@@ -45,5 +45,29 @@ export const Title = styled.h1`
   margin-top: 80px;
   display:flex;
   justify-content: center;
+  color: ${shade(0.5, '#2CB1EE')};
 `;
 
+
+export const DocPendente = styled.div`
+  display: flex !important;
+  flex-direction: column !important;
+  background: #ffcccc !important;
+
+  button{
+    background: white ;
+    height:56px;
+    border-radius: 10px;
+    border:0;
+    padding: 0 8px;
+    color: #312e38;
+    width: 50%;
+    font-weight: 500;
+    margin-top:16px;
+    transition: background-color 0.2s;
+    &:hover{
+      background: ${shade(0.2, 'white')}
+    }
+
+  }
+`;
